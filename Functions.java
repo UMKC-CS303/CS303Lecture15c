@@ -143,8 +143,51 @@ public class Functions {
 
   }
 
-   public static void example7(){
-      System.out.println("\n\nEXAMPLE 7: Shortest Path (Undirected)\n");
+  public static void example7(){
+      System.out.println("\n\nEXAMPLE 7: Test Shortest Path (Undirected & Unweighted)\n");
+
+    // List of Edge objects Example from Lecture
+    Character[] names = {'S', 'A', 'B', 'C', 'D', 'E'};
+    int[][]edges = {{0, 1}, {0, 2}, {0, 5}, {1, 2}, {2, 3}, {2, 4}, {4, 5}};
+
+    GenericGraph<Character> graph1 = new GenericGraph<>(false, false, names, edges);
+
+    System.out.println("\nGraph Representation (adjacency list):  ");
+    graph1.printAdjacencyList();
+
+    System.out.print("Graph Breadth First Search Order:       ");
+    List<Character> bfsList = graph1.breadthFirstSearch('S');
+    System.out.println(bfsList);
+
+    List<Character> shortest = graph1.getShortestPathUnweighted('S', 'D');
+    System.out.println(shortest);
+  }
+
+
+  public static void example8(){
+      System.out.println("\n\nEXAMPLE 8: Test Shortest Path (Undirected & Unweighted)\n");
+
+    // List of Edge objects Example from Lecture
+    Character[] names = {'S', 'A', 'B', 'C', 'D', 'E', 'F'};
+    int[][]edges = {{0, 2}, {0, 5}, {1, 2}, {1, 5}, {2, 3}, {2, 6}, 
+                    {3, 4}, {4, 5}, {5, 6}};
+
+    GenericGraph<Character> graph1 = new GenericGraph<>(false, false, names, edges);
+
+    System.out.println("\nGraph Representation (adjacency list):  ");
+    graph1.printAdjacencyList();
+
+    System.out.print("Graph Breadth First Search Order:       ");
+    List<Character> bfsList = graph1.breadthFirstSearch('S');
+    System.out.println(bfsList);
+
+    List<Character> shortest = graph1.getShortestPathUnweighted('S', 'D');
+    System.out.println(shortest);
+  }
+
+  
+   public static void example9(){
+      System.out.println("\n\nEXAMPLE 9: Shortest Path (Undirected)\n");
       GenericGraph<Integer> graph1 = new GenericGraph<>(false, false);
 
       graph1.addEdge(0, 1);
@@ -176,7 +219,7 @@ public class Functions {
     System.out.println(r);
   }
 
-  public static void example8(){
+  public static void example10(){
     System.out.println("\n\nEXAMPLE 8: BFS Example (Lecture)");
     Integer[] nodes = {0,1,2,3,4,5,6,7,8,9};
     int[][]edges4 = {

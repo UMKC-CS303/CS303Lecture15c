@@ -11,11 +11,13 @@ public class Main {
         Functions.example3();
         Functions.example4();
 
-        //Examples 5-8: Lecture 15C (Breadth First Search)
-        System.out.println("\n\nLECTURE 15C: GRAPH TRAVERSALS BFS EXAMPLES 5-8\n");        
+        //Examples 5-10: Lecture 15C (Breadth First Search)
+        System.out.println("\n\nLECTURE 15C: GRAPH TRAVERSALS BFS EXAMPLES 5-10\n");        
         Functions.example5();
         Functions.example6();
         Functions.example7();
         Functions.example8();
+        Functions.example9();
+        Functions.example10();
     }
 }
