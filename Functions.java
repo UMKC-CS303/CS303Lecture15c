@@ -95,7 +95,7 @@ public class Functions {
 
 
   public static void example5(){
-    System.out.println("\n\nEXAMPLE 5:  BFS Example (Lecture");
+    System.out.println("\n\nEXAMPLE 5:  BFS Example (Lecture)");
     GenericGraph<Integer> graph1 = new GenericGraph<>(true, false);
 
     graph1.addEdge(0,2);
@@ -220,7 +220,7 @@ public class Functions {
   }
 
   public static void example10(){
-    System.out.println("\n\nEXAMPLE 8: BFS Example (Lecture)");
+    System.out.println("\n\nEXAMPLE 10: BFS Example (Lecture)");
     Integer[] nodes = {0,1,2,3,4,5,6,7,8,9};
     int[][]edges4 = {
       {0,1}, {0,3},
@@ -241,6 +241,112 @@ public class Functions {
     System.out.println(shortest);
 
   }
- 
+
+  public static void example11(){
+      System.out.println("\n\nEXAMPLE 11: DFS Example (Lecture) Undirected & Unweighted");
+      Integer[] nodes = {0,1,2,3,4,5,6};
+      int[][]edges4 = {
+        {0,1}, {0,2}, {0,3}, {0,4}, 
+        {1,3}, {1,4}, 
+        {2,5}, {2,6}, 
+        {3,4},
+        {5,6}};
+
+      GenericGraph<Integer> graph = new GenericGraph<>(false, false, nodes, edges4);
+
+      System.out.println("\nGraph Representation (adjacency list):  ");
+      graph.printAdjacencyList();
+      GenericGraph.DFSOrder<Integer> dfsList = graph.depthFirstSearch(0);
+
+      System.out.print("\nGraph Depth First - Visit Order:        ");
+      System.out.println(dfsList.visitOrder);
+
+      System.out.print("Graph Depth First - Finish Order:       ");
+      System.out.println(dfsList.finishOrder);
+      if (graph.isDirected()){
+          System.out.print("Graph Depth First - Topological Order:  ");
+          System.out.println(dfsList.topologicalOrder);
+      }
+  }
+
+    public static void example12(){
+      System.out.println("\n\nEXAMPLE 12:  DFS Example (same as BFS Example 5)");
+      GenericGraph<Integer> graph = new GenericGraph<>(true, false);
+
+      graph.addEdge(0,2);
+      graph.addEdge(1,0);
+      graph.addEdge(1,2);
+      graph.addEdge(1,4);
+      graph.addEdge(1,5);
+      graph.addEdge(2,5);
+      graph.addEdge(3,0);
+      graph.addEdge(3,1);
+      graph.addEdge(4,6);
+      graph.addEdge(5,6);
+
+      System.out.println("\nGraph Representation (adjacency list):  ");
+      graph.printAdjacencyList();
+      GenericGraph.DFSOrder<Integer> dfsList = graph.depthFirstSearch(3);
+
+      System.out.print("\nGraph Depth First - Visit Order:        ");
+      System.out.println(dfsList.visitOrder);
+
+      System.out.print("Graph Depth First - Finish Order:       ");
+      System.out.println(dfsList.finishOrder);
+      if (graph.isDirected()){
+          System.out.print("Graph Depth First - Topological Order:  ");
+          System.out.println(dfsList.topologicalOrder);
+      }
+  }
+  
+  public static void example13() {
+  
+      System.out.println("\nExample 13: DFS EXAMPLE: Directed & Unweighted ");
+
+      // List of Edge objects Example from Lecture
+      Character[] names = {'A', 'B', 'C', 'D', 'E'};
+      int[][]edges = {{0, 1}, {0, 3}, {1, 2}, {2, 3}, {2, 4}, {3, 4}};
+
+      GenericGraph<Character> graph = new GenericGraph<>(true, false, names, edges);
+
+      System.out.println("\nGraph Representation (adjacency list):  ");
+      graph.printAdjacencyList();
+      GenericGraph.DFSOrder<Character> dfsList = graph.depthFirstSearch('A');
+
+      System.out.print("\nGraph Depth First - Visit Order:        ");
+      System.out.println(dfsList.visitOrder);
+
+      System.out.print("Graph Depth First - Finish Order:       ");
+      System.out.println(dfsList.finishOrder);
+      if (graph.isDirected()){
+        System.out.print("Graph Depth First - Topological Order:  ");
+        System.out.println(dfsList.topologicalOrder);
+      }
+  }
+
+  public static void example14(){
+      System.out.println("\n\nEXAMPLE 14: DFS Example (Lecture) Directed & Unweighted");
+      Integer[] nodes = {0,1,2,3,4,5,6,7,8};
+      int[][]edges = {
+        {0,1}, {0,3}, {0,4}, {1,2}, {1,4}, {1,5}, 
+        {2,5}, {3,6}, {4, 6}, {4,7}, 
+        {5,7}, {6,8}, {7,8}};
+
+      GenericGraph<Integer> graph = new GenericGraph<>(true, false, nodes, edges);
+
+      System.out.println("\nGraph Representation (adjacency list):  ");
+      graph.printAdjacencyList();
+      GenericGraph.DFSOrder<Integer> dfsList = graph.depthFirstSearch(0);
+
+      System.out.print("\nGraph Depth First - Visit Order:        ");
+      System.out.println(dfsList.visitOrder);
+
+      System.out.print("Graph Depth First - Finish Order:       ");
+      System.out.println(dfsList.finishOrder);
+      if (graph.isDirected()){
+          System.out.print("Graph Depth First - Topological Order:  ");
+          System.out.println(dfsList.topologicalOrder);
+      }
+  }
 
 }

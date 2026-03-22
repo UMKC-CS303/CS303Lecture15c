@@ -200,4 +200,71 @@ public class GenericGraph<V> extends AbstractGraph<V> {
         return path;
     }
 
+    
+    public static class DFSOrder<V> {
+        public final List<V> visitOrder = new ArrayList<>();
+        public final List<V> finishOrder = new ArrayList<>();
+        public final List<V> topologicalOrder = new ArrayList<>();
+        boolean isCyclic;
+
+        public DFSOrder() {
+            boolean isCyclic = false;
+        }
+    }
+
+    public DFSOrder<V> depthFirstSearch(V start) {
+        requireVertex(start);
+
+        DFSOrder<V> order = new DFSOrder<>();
+        List<V> visiting = new ArrayList<>();
+        List<V> visited = new ArrayList<>();
+
+        dfsHelper(start, visiting, visited, order);
+
+        //double check that all vertices have been visited
+        //if not, call dfsHelper for the vertices not visited
+        for (V v : vertices()) {
+            if (!visited.contains(v)) 
+                dfsHelper(v, visiting, visited, order);
+        } 
+
+         // Topological order = reverse of finishOrder (for DAGs)
+        if (!order.isCyclic){
+             for (int i = order.finishOrder.size() - 1; i >= 0; i--) 
+                order.topologicalOrder.add(order.finishOrder.get(i));
+        }
+        return order;
+    }
+
+    //PRE:  accepts the vertex, the lists of visiting & visited vertexes 
+    //      & lists of vertices that need to be updated 
+    //POST: this recursive function verifies that the current vertex has
+    //      not been visited 
+
+    private void dfsHelper(V current, List<V> visiting, List<V> visited, DFSOrder<V> order) {
+
+        //cycle detected
+        if (visiting.contains(current)){
+            order.isCyclic = true;
+            return;
+        }
+        if (visited.contains(current))
+            return;
+        
+        visiting.add(current);
+        order.visitOrder.add(current);
+
+        for (V neighbor : neighborsOf(current)) {
+            if (visiting.contains(neighbor)){
+                order.isCyclic = true;
+                continue;
+            }
+            if (!visited.contains(neighbor))
+                dfsHelper(neighbor, visiting, visited, order);
+        }
+        visiting.remove(current);
+        visited.add(current);
+        order.finishOrder.add(current);
+    }
+
 }

@@ -19,5 +19,12 @@ public class Main {
         Functions.example8();
         Functions.example9();
         Functions.example10();
+
+        //Examples 11-14: Lecture 15D (Depth First Search)
+        System.out.println("\n\nLECTURE 15D: GRAPH TRAVERSALS DFS EXAMPLES 11-14\n");   
+        Functions.example11();
+        Functions.example12();  
+        Functions.example13();     
+        Functions.example14();     
     }
 }
